@@ -1,0 +1,175 @@
+[gd_scene load_steps=12 format=3 uid="uid://ctd1ormjcl3lb"]
+
+[ext_resource type="Script" path="res://Player1.gd" id="1_4f6fx"]
+[ext_resource type="Script" path="res://game.gd" id="1_q4kdf"]
+[ext_resource type="Script" path="res://Player2.gd" id="2_646iw"]
+[ext_resource type="Script" path="res://Ball.gd" id="3_q1j1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iadh"]
+size = Vector2(20, 108)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7jsl8"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_nlx8v"]
+font_size = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42rne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv5tc"]
+size = Vector2(1279, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3inup"]
+size = Vector2(17, 700)
+
+[sub_resource type="LabelSettings" id="LabelSettings_poaqt"]
+font_size = 128
+
+[node name="Game" type="Node2D"]
+self_modulate = Color(0, 0, 0, 1)
+script = ExtResource("1_q4kdf")
+
+[node name="backgorund" type="ColorRect" parent="."]
+offset_left = -53.0
+offset_top = -37.0
+offset_right = 1324.0
+offset_bottom = 756.0
+size_flags_horizontal = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Player1" type="Area2D" parent="."]
+position = Vector2(20, 360)
+script = ExtResource("1_4f6fx")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Player1"]
+offset_left = -9.0
+offset_top = -54.0
+offset_right = 10.0
+offset_bottom = 54.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("RectangleShape2D_8iadh")
+
+[node name="Player2" type="Area2D" parent="."]
+position = Vector2(1260, 360)
+script = ExtResource("2_646iw")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Player2"]
+offset_left = -9.0
+offset_top = -54.0
+offset_right = 10.0
+offset_bottom = 54.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+shape = SubResource("RectangleShape2D_8iadh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -205.5
+offset_right = 214.5
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Score1" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_7jsl8")
+horizontal_alignment = 1
+
+[node name="Score2" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_nlx8v")
+horizontal_alignment = 1
+
+[node name="Ball" type="Area2D" parent="."]
+position = Vector2(640, 360)
+script = ExtResource("3_q1j1n")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Ball"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("RectangleShape2D_42rne")
+
+[node name="Techo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Techo"]
+position = Vector2(640.5, 0)
+shape = SubResource("RectangleShape2D_dv5tc")
+
+[node name="Piso" type="Area2D" parent="."]
+position = Vector2(0, 720)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
+position = Vector2(641, 0)
+shape = SubResource("RectangleShape2D_dv5tc")
+
+[node name="ArcoIzquierdo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArcoIzquierdo"]
+position = Vector2(-7.5, 360)
+shape = SubResource("RectangleShape2D_3inup")
+
+[node name="ArcoDerecho" type="Area2D" parent="."]
+position = Vector2(1290, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArcoDerecho"]
+position = Vector2(-1.5, 360)
+shape = SubResource("RectangleShape2D_3inup")
+
+[node name="tiempoMuerto" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 602.0
+offset_top = 193.0
+offset_right = 675.0
+offset_bottom = 368.0
+text = "3"
+label_settings = SubResource("LabelSettings_poaqt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 578.0
+offset_top = 417.0
+offset_right = 716.0
+offset_bottom = 483.0
+metadata/_edit_group_ = true
+
+[node name="NuevoJuego" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Nuevo Juego"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Salir al escritorio"
+
+[connection signal="area_entered" from="Player1" to="Ball" method="_on_hit_ball"]
+[connection signal="area_entered" from="Player2" to="Ball" method="_on_hit_ball"]
+[connection signal="area_entered" from="Techo" to="Ball" method="_on_ball_entered"]
+[connection signal="area_entered" from="Piso" to="Ball" method="_on_ball_entered"]
+[connection signal="area_entered" from="ArcoIzquierdo" to="." method="_on_arco_izquierdo_area_entered"]
+[connection signal="area_entered" from="ArcoDerecho" to="." method="_on_arco_derecho_area_entered"]
+[connection signal="timeout" from="tiempoMuerto" to="." method="_on_tiempo_muerto_timeout"]
+[connection signal="timeout" from="tiempoMuerto" to="Ball" method="_on_tiempo_muerto_timeout"]
+[connection signal="pressed" from="VBoxContainer/NuevoJuego" to="." method="_on_nuevo_juego_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
