@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://ctd1ormjcl3lb"]
 
-[ext_resource type="Script" path="res://Player1.gd" id="1_4f6fx"]
-[ext_resource type="Script" path="res://game.gd" id="1_q4kdf"]
-[ext_resource type="Script" path="res://Player2.gd" id="2_646iw"]
-[ext_resource type="Script" path="res://Ball.gd" id="3_q1j1n"]
-[ext_resource type="Script" path="res://VBoxContainer.gd" id="5_se35f"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_4lamu"]
+[ext_resource type="Script" path="res://scripts/Player1.gd" id="2_rb7sr"]
+[ext_resource type="Script" path="res://scripts/Player2.gd" id="3_a20hc"]
+[ext_resource type="Script" path="res://scripts/Ball.gd" id="4_o0wi7"]
+[ext_resource type="Script" path="res://scripts/VBoxContainer.gd" id="5_fbmt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8iadh"]
 size = Vector2(20, 108)
@@ -28,7 +28,7 @@ font_size = 128
 
 [node name="Game" type="Node2D"]
 self_modulate = Color(0, 0, 0, 1)
-script = ExtResource("1_q4kdf")
+script = ExtResource("1_4lamu")
 
 [node name="backgorund" type="ColorRect" parent="."]
 offset_left = -53.0
@@ -40,7 +40,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Player1" type="Area2D" parent="."]
 position = Vector2(20, 360)
-script = ExtResource("1_4f6fx")
+script = ExtResource("2_rb7sr")
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Player1"]
@@ -54,7 +54,7 @@ shape = SubResource("RectangleShape2D_8iadh")
 
 [node name="Player2" type="Area2D" parent="."]
 position = Vector2(1260, 360)
-script = ExtResource("2_646iw")
+script = ExtResource("3_a20hc")
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Player2"]
@@ -96,7 +96,7 @@ horizontal_alignment = 1
 
 [node name="Ball" type="Area2D" parent="."]
 position = Vector2(640, 360)
-script = ExtResource("3_q1j1n")
+script = ExtResource("4_o0wi7")
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Ball"]
@@ -153,7 +153,7 @@ offset_left = 578.0
 offset_top = 417.0
 offset_right = 716.0
 offset_bottom = 483.0
-script = ExtResource("5_se35f")
+script = ExtResource("5_fbmt7")
 metadata/_edit_group_ = true
 
 [node name="NuevoJuego" type="Button" parent="VBoxContainer"]
