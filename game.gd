@@ -10,9 +10,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Label.text = str(round($tiempoMuerto.time_left))
-	if Input.is_action_just_pressed("PAUSA"):
-		$VBoxContainer.show()
-		get_tree().paused = true
 
 
 func _on_arco_izquierdo_area_entered(area):
@@ -41,6 +38,7 @@ func _on_nuevo_juego_pressed():
 	$CanvasLayer/HBoxContainer/Score1.text = str(puntaje1)
 	$CanvasLayer/HBoxContainer/Score2.text = str(puntaje2)
 	$Ball.velocity = Vector2()
+	$Ball.position = Vector2(640,360)
 	$tiempoMuerto.start()
 	get_tree().paused = false
 	$VBoxContainer.hide()

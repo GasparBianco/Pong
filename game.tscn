@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctd1ormjcl3lb"]
+[gd_scene load_steps=13 format=3 uid="uid://ctd1ormjcl3lb"]
 
 [ext_resource type="Script" path="res://Player1.gd" id="1_4f6fx"]
 [ext_resource type="Script" path="res://game.gd" id="1_q4kdf"]
 [ext_resource type="Script" path="res://Player2.gd" id="2_646iw"]
 [ext_resource type="Script" path="res://Ball.gd" id="3_q1j1n"]
+[ext_resource type="Script" path="res://VBoxContainer.gd" id="5_se35f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8iadh"]
 size = Vector2(20, 108)
@@ -147,19 +148,21 @@ text = "3"
 label_settings = SubResource("LabelSettings_poaqt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+process_mode = 3
 offset_left = 578.0
 offset_top = 417.0
 offset_right = 716.0
 offset_bottom = 483.0
+script = ExtResource("5_se35f")
 metadata/_edit_group_ = true
 
 [node name="NuevoJuego" type="Button" parent="VBoxContainer"]
-process_mode = 3
+process_mode = 2
 layout_mode = 2
 text = "Nuevo Juego"
 
 [node name="Salir" type="Button" parent="VBoxContainer"]
-process_mode = 3
+process_mode = 2
 layout_mode = 2
 text = "Salir al escritorio"
 
