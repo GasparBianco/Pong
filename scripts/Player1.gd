@@ -12,3 +12,4 @@ func _process(delta):
 		position.y += delta * 600
 	elif Input.is_action_pressed("Player1_UP"):
 		position.y -= delta * 600
+	position.y = clamp(position.y, 0, 720)

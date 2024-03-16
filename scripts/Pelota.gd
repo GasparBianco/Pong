@@ -10,10 +10,10 @@ func _process(delta):
 	position += delta * velocidad * direccion
 	
 func comienzo_nuevo_gol():
-	var initialDirection = randf_range(-1, 1)
+	var direccionInicial = randf_range(-1, 1)
 	var direccionX = randi_range(0, 1) * 2 - 1
-	var x = cos(initialDirection) * direccionX
-	var y = sin(initialDirection)
+	var x = cos(direccionInicial) * direccionX
+	var y = sin(direccionInicial)
 	direccion = Vector2(x, y).normalized()
 	velocidad = 750
 
